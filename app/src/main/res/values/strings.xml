@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">GenericShopApp</string>
+    <string name="title_splash"><font color="#dc6f31">Your Shoping</font> Destination\nfor Everything</string>
+    <string name="subtitle_splash">Get Personalized recommendations\nEnjoy fast,free shipping</string>
+    <string name="signin">Already have an account? <font color="#dc6f31">SignIn</font></string>
 </resources>
