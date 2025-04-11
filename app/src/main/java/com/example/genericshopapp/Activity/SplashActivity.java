@@ -1,19 +1,12 @@
-package com.example.genericshopapp;
+package com.example.genericshopapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.splashscreen.SplashScreen;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStore;
-import androidx.lifecycle.ViewModelStoreOwner;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ViewTreeObserver;
-import android.view.Window;
 import android.view.View;
-import android.widget.Button;
-import android.window.SplashScreenView;
+
+import com.example.genericshopapp.R;
 
 public class SplashActivity extends AppCompatActivity {
 
