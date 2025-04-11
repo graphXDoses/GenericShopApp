@@ -24,5 +24,13 @@ public class DetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        findViewById(R.id.favBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DetailActivity.this, CartActivity.class));
+                finish();
+            }
+        });
     }
 }
