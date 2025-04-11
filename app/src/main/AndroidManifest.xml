@@ -12,8 +12,14 @@
         android:theme="@style/Theme.GenericShopApp"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.DetailActivity"
+            android:exported="true" ></activity>
+        <activity
+            android:name=".Activity.CartActivity"
+            android:exported="true" ></activity>
+        <activity
             android:name=".Activity.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

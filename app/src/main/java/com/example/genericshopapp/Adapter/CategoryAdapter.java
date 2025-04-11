@@ -32,8 +32,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         ,parent,false);
         return new ViewHolder(binding);
 
-
-        return null;
+        // This cased an error `Unreachable statement`
+        //return null;
     }
 
     @Override
