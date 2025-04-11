@@ -2,27 +2,23 @@ package com.example.genericshopapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity {
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_detail);
 
         // TODO: Implement Backend logic for activity. This showcase
         //       is temporary.
-        ((ImageView) findViewById(R.id.imageView5)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.backBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, DetailActivity.class));
+                startActivity(new Intent(DetailActivity.this, MainActivity.class));
                 finish();
             }
         });

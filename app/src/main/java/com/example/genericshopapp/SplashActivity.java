@@ -25,6 +25,8 @@ public class SplashActivity extends AppCompatActivity {
 //        getSupportActionBar().setDisplayUseLogoEnabled(false);
         setContentView(R.layout.activity_splash);
 
+        // TODO: Implement Backend logic for activity. This showcase
+        //       is temporary.
         findViewById(R.id.startBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
