@@ -1,28 +1,29 @@
-package com.example.genericshopapp;
+package com.example.genericshopapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.genericshopapp.R;
 
-    @SuppressLint("MissingInflatedId")
+public class SplashActivity extends AppCompatActivity {
+
+//    private ViewModel mViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        getSupportActionBar().setDisplayUseLogoEnabled(false);
+        setContentView(R.layout.activity_splash);
 
         // TODO: Implement Backend logic for activity. This showcase
         //       is temporary.
-        ((ImageView) findViewById(R.id.imageView5)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.startBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, DetailActivity.class));
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 finish();
             }
         });
