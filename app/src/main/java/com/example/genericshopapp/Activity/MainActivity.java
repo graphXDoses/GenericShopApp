@@ -1,6 +1,7 @@
 package com.example.genericshopapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,15 +10,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.genericshopapp.Adapter.CategoryAdapter;
 import com.example.genericshopapp.R;
+import com.example.genericshopapp.VIewModel.MainViewModel;
+import com.example.genericshopapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;
+    private MainViewModel viewModel;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        viewModel = new MainViewModel();
+        initCategory();
 
         // TODO: Implement Backend logic for activity. This showcase
         //       is temporary.
@@ -28,5 +40,18 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void initCategory() {
+        binding.progressBarCategory.setVisibility(View.VISIBLE);
+        viewModel.loadCategory().observeForever(categoryModels -> {
+                binding.categoryView.setLayoutManager(new LinearLayoutManager(
+                        MainActivity.this,LinearLayoutManager.HORIZONTAL,false));
+                binding.categoryView.setAdapter(new CategoryAdapter(categoryModels));
+                binding.categoryView.setNestedScrollingEnabled(true);
+                binding.progressBarCategory.setVisibility(View.GONE);
+
+        });
+
     }
 }

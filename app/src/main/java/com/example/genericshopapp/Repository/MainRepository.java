@@ -23,12 +23,12 @@ public class MainRepository {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<CategoryModel> list = new ArrayList<>();
+
                 for(DataSnapshot childSnapshot :snapshot.getChildren()){
                     CategoryModel item = childSnapshot.getValue(CategoryModel.class);
                     if(item !=null)list.add(item);
                 }
                 listData.setValue(list);
-
             }
 
             @Override
