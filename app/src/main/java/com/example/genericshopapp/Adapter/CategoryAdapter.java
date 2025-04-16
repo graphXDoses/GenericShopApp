@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.genericshopapp.Domain.CategoryModel;
+import com.example.genericshopapp.R;
 import com.example.genericshopapp.databinding.ViewholderCategoryBinding;
 
 import java.util.ArrayList;
@@ -29,16 +30,31 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public CategoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         ViewholderCategoryBinding binding = ViewholderCategoryBinding.inflate(LayoutInflater.from(context)
-        ,parent,false);
+               ,parent,false);
         return new ViewHolder(binding);
 
-        // This cased an error `Unreachable statement`
-        //return null;
     }
 
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
-        //holder.binding.titleTxt.
+        holder.binding.titleTxt.setText(items.get(position).getTitle());
+
+        holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lastSelectedPosition = selectedPosition;
+                selectedPosition = position;
+                notifyItemChanged(lastSelectedPosition);
+                notifyItemChanged(selectedPosition);
+            }
+        });
+        if(selectedPosition == position){
+            holder.binding.titleTxt.setBackgroundResource(R.drawable.orange_bg);
+            holder.binding.titleTxt.setTextColor(context.getResources().getColor(R.color.white));
+        }else{
+            holder.binding.titleTxt.setBackgroundResource(R.drawable.stroke_bg);
+            holder.binding.titleTxt.setTextColor(context.getResources().getColor(R.color.black));
+        }
 
     }
 
