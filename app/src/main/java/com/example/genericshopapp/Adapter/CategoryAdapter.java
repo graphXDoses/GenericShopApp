@@ -21,6 +21,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     private int lastSelectedPosition = -1;
 
 
+    public CategoryAdapter() {
+        this.items = new ArrayList<>();
+    }
     public CategoryAdapter(ArrayList<CategoryModel> items) {
         this.items = items;
     }
