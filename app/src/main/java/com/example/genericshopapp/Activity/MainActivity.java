@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initCategory() {
+        // Just to initialize the layout manager & adapter.
+        binding.categoryView.setLayoutManager(new LinearLayoutManager(
+                MainActivity.this,LinearLayoutManager.HORIZONTAL,false));
+        binding.categoryView.setAdapter(new CategoryAdapter());
+
         binding.progressBarCategory.setVisibility(View.VISIBLE);
         viewModel.loadCategory().observeForever(categoryModels -> {
                 binding.categoryView.setLayoutManager(new LinearLayoutManager(

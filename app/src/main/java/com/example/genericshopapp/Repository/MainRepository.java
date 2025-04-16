@@ -14,7 +14,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class MainRepository {
-    private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    // Firebase URL needs to be explicitly passed to get an instance (for some reason).
+    private final FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://genericshopapp-default-rtdb.europe-west1.firebasedatabase.app/");
 
     public LiveData<ArrayList<CategoryModel>> loadCategory(){
         MutableLiveData<ArrayList<CategoryModel>>  listData = new MutableLiveData<>();
