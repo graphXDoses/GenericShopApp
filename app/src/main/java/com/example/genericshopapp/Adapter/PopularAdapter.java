@@ -21,6 +21,8 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
     ArrayList<ItemsModel> items;
     Context context;
 
+    public PopularAdapter() { this.items = new ArrayList<>(); }
+
     public PopularAdapter(ArrayList<ItemsModel> items) {
         this.items = items;
     }
