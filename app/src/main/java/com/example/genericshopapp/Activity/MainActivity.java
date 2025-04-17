@@ -50,8 +50,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void initializeBannerLayout()
+    {
+        binding.viewPagerSlider.setClipToPadding(false);
+        binding.viewPagerSlider.setClipChildren(false);
+        binding.viewPagerSlider.setOffscreenPageLimit(3);
+        binding.viewPagerSlider.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+
+        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
+        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
+
+        binding.viewPagerSlider.setPageTransformer(compositePageTransformer);
+    }
+
+
     private void initSlider(){
         binding.progressBarSlider.setVisibility(View.VISIBLE);
+        binding.viewPagerSlider.setAdapter(new SliderAdapter());
+        initializeBannerLayout();
+
         viewModel.loadBanner().observeForever(bannerModels -> {
             if(bannerModels!=null && !bannerModels.isEmpty()){
                 banners(bannerModels);
@@ -64,15 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void banners(ArrayList<BannerModel> bannerModels){
         binding.viewPagerSlider.setAdapter(new SliderAdapter(bannerModels, binding.viewPagerSlider));
-        binding.viewPagerSlider.setClipToPadding(false);
-        binding.viewPagerSlider.setClipChildren(false);
-        binding.viewPagerSlider.setOffscreenPageLimit(3);
-        binding.viewPagerSlider.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-
-        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
-        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
-
-        binding.viewPagerSlider.setPageTransformer(compositePageTransformer);
+        initializeBannerLayout();
     }
 
     private void initCategory() {

@@ -29,6 +29,8 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
         }
     };
 
+    public SliderAdapter(){ this.sliderItems = new ArrayList<>(); }
+
     public SliderAdapter(ArrayList<BannerModel> sliderItems, ViewPager2 viewPager2)
     {
         this.sliderItems = sliderItems;
