@@ -3,6 +3,7 @@ package com.example.genericshopapp.VIewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.genericshopapp.Domain.BannerModel;
 import com.example.genericshopapp.Domain.CategoryModel;
 import com.example.genericshopapp.Repository.MainRepository;
 
@@ -15,5 +16,7 @@ public class MainViewModel extends ViewModel {
         return repository.loadCategory();
     }
 
-
+    public LiveData<ArrayList<BannerModel>> loadBanner(){
+        return repository.loadBanner();
+    }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.imageview.ShapeableImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:minHeight="150dp"
+    android:id="@+id/imageSlide"
+    android:scaleType="centerCrop"
+    app:shapeAppearanceOverlay="@style/circleImageView"
+
+    android:layout_height="match_parent">
+
+</com.google.android.material.imageview.ShapeableImageView>
