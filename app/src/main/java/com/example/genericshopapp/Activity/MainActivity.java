@@ -2,6 +2,9 @@ package com.example.genericshopapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,9 +14,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.genericshopapp.Adapter.CategoryAdapter;
+import com.example.genericshopapp.Adapter.SliderAdapter;
+import com.example.genericshopapp.Domain.BannerModel;
 import com.example.genericshopapp.R;
 import com.example.genericshopapp.VIewModel.MainViewModel;
 import com.example.genericshopapp.databinding.ActivityMainBinding;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = new MainViewModel();
         initCategory();
+        initSlider();
 
         // TODO: Implement Backend logic for activity. This showcase
         //       is temporary.
@@ -40,6 +48,31 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void initSlider(){
+        binding.progressBarSlider.setVisibility(View.VISIBLE);
+        viewModel.loadBanner().observeForever(bannerModels -> {
+            if(bannerModels!=null && !bannerModels.isEmpty()){
+                banners(bannerModels);
+                binding.progressBarSlider.setVisibility(View.GONE);
+            }
+        });
+
+        viewModel.loadBanner();
+    }
+
+    private void banners(ArrayList<BannerModel> bannerModels){
+        binding.viewPagerSlider.setAdapter(new SliderAdapter(bannerModels, binding.viewPagerSlider));
+        binding.viewPagerSlider.setClipToPadding(false);
+        binding.viewPagerSlider.setClipChildren(false);
+        binding.viewPagerSlider.setOffscreenPageLimit(3);
+        binding.viewPagerSlider.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+
+        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
+        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
+
+        binding.viewPagerSlider.setPageTransformer(compositePageTransformer);
     }
 
     private void initCategory() {
