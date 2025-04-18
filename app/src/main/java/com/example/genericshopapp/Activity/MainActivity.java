@@ -20,6 +20,7 @@ import com.example.genericshopapp.Domain.BannerModel;
 import com.example.genericshopapp.R;
 import com.example.genericshopapp.VIewModel.MainViewModel;
 import com.example.genericshopapp.databinding.ActivityMainBinding;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import java.util.ArrayList;
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         initCategory();
         initSlider();
         initPopular();
+        bottomNavigation();
 
         // TODO: Implement Backend logic for activity. This showcase
         //       is temporary.
@@ -48,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, DetailActivity.class));
                 finish();
+            }
+        });
+    }
+    private void bottomNavigation() {
+
+        binding.bottomNavigation.setItemSelected(R.id.home,true);
+        binding.bottomNavigation.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(int i) {
+
             }
         });
     }
