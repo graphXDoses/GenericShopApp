@@ -43,15 +43,7 @@ public class MainActivity extends AppCompatActivity {
         initPopular();
         bottomNavigation();
 
-        // TODO: Implement Backend logic for activity. This showcase
-        //       is temporary.
-        ((ImageView) findViewById(R.id.imageView5)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, DetailActivity.class));
-                finish();
-            }
-        });
+
     }
     private void bottomNavigation() {
 
@@ -62,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        binding.cartBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this,CartActivity.class)));
     }
 
     private void initPopular() {
