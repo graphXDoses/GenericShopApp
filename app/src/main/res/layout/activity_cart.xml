@@ -8,7 +8,7 @@
     tools:context=".Activity.CartActivity">
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/emptyTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your cart is empty"
