@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 
-import com.uilover.project2272.Domain.ItemsModel;
+import com.example.genericshopapp.Domain.ItemsModel;
 
 import java.util.ArrayList;
 
@@ -30,7 +30,7 @@ public class ManagmentCart {
             }
         }
         if (existAlready) {
-            listItem.get(n).setNumberinCart(item.getNumberinCart());
+            listItem.get(n).setNumberInCart(item.getNumberInCart());
         } else {
             listItem.add(item);
         }
@@ -43,17 +43,17 @@ public class ManagmentCart {
     }
 
     public void minusItem(ArrayList<ItemsModel> listItem, int position, ChangeNumberItemsListener changeNumberItemsListener) {
-        if (listItem.get(position).getNumberinCart() == 1) {
+        if (listItem.get(position).getNumberInCart() == 1) {
             listItem.remove(position);
         } else {
-            listItem.get(position).setNumberinCart(listItem.get(position).getNumberinCart() - 1);
+            listItem.get(position).setNumberInCart(listItem.get(position).getNumberInCart() - 1);
         }
         tinyDB.putListObject("CartList", listItem);
         changeNumberItemsListener.changed();
     }
 
     public void plusItem(ArrayList<ItemsModel> listItem, int position, ChangeNumberItemsListener changeNumberItemsListener) {
-        listItem.get(position).setNumberinCart(listItem.get(position).getNumberinCart() + 1);
+        listItem.get(position).setNumberInCart(listItem.get(position).getNumberInCart() + 1);
         tinyDB.putListObject("CartList", listItem);
         changeNumberItemsListener.changed();
     }
@@ -62,7 +62,7 @@ public class ManagmentCart {
         ArrayList<ItemsModel> listItem2 = getListCart();
         double fee = 0;
         for (int i = 0; i < listItem2.size(); i++) {
-            fee = fee + (listItem2.get(i).getPrice() * listItem2.get(i).getNumberinCart());
+            fee = fee + (listItem2.get(i).getPrice() * listItem2.get(i).getNumberInCart());
         }
         return fee;
     }

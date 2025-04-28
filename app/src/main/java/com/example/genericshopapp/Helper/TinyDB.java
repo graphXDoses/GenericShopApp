@@ -32,7 +32,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.uilover.project2272.Domain.ItemsModel;
+import com.example.genericshopapp.Domain.ItemsModel;
 
 import java.io.File;
 import java.io.FileOutputStream;
