@@ -1,11 +1,14 @@
 package com.example.genericshopapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.genericshopapp.Adapter.CartAdapter;
+import com.example.genericshopapp.Helper.ChangeNumberItemsListener;
 import com.example.genericshopapp.Helper.ManagmentCart;
 import com.example.genericshopapp.R;
 import com.example.genericshopapp.databinding.ActivityCartBinding;
@@ -57,6 +60,9 @@ public class CartActivity extends AppCompatActivity {
             binding.scrollView2.setVisibility(View.VISIBLE);
 
         }
+
+        binding.cartView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        binding.cartView.setAdapter(new CartAdapter(managementCart.getListCart(), this, this::calculatorCart));
         
     }
 
