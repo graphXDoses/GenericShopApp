@@ -22,9 +22,10 @@ public class CartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         binding = ActivityCartBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_cart);
+        setContentView(binding.getRoot());
 
         managementCart = new ManagmentCart(this);
         
@@ -49,10 +50,14 @@ public class CartActivity extends AppCompatActivity {
 
     private void initCartList() {
 
+        binding.cartView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        binding.cartView.setAdapter(new CartAdapter());
+
         if(managementCart.getListCart().isEmpty()){
 
-            binding.emptyTxt.setVisibility(View.GONE);
+            binding.emptyTxt.setVisibility(View.VISIBLE);
             binding.scrollView2.setVisibility(View.GONE);
+            binding.backBtn.setVisibility(View.VISIBLE);
 
         }else{
 
@@ -63,6 +68,8 @@ public class CartActivity extends AppCompatActivity {
 
         binding.cartView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         binding.cartView.setAdapter(new CartAdapter(managementCart.getListCart(), this, this::calculatorCart));
+
+
         
     }
 
